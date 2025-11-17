@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Location Awareness Demo</title>
+</head>
+<body>
+  <h2>Location Awareness Demonstration</h2>
+  <p>This page will show your GPS coordinates after you click “Allow”.</p>
+
+  <button onclick="getLocation()">Get My Location</button>
+
+  <p id="output"></p>
+
+<script>
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+        document.getElementById("output").innerHTML = "Geolocation not supported.";
+    }
+}
+
+function showPosition(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    document.getElementById("output").innerHTML =
+        "Latitude: " + lat + "<br>Longitude: " + lon;
+
+    // If you want to send the data to your server WITH CONSENT:
+    // fetch("/save-location", {
+    //   method: "POST",
+    //   headers: {"Content-Type": "application/json"},
+    //   body: JSON.stringify({latitude: lat, longitude: lon})
+    // });
+}
+
+function showError(error) {
+    document.getElementById("output").innerHTML = "Error getting location: " + error.message;
+}
+</script>
+
+</body>
+</html>
