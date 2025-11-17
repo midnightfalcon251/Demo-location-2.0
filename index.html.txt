@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+
+
 <head>
   <title>Location Awareness Demo</title>
 </head>
@@ -42,3 +44,4 @@ function showError(error) {
 
 </body>
 </html>
+
